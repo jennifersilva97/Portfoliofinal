@@ -7,13 +7,14 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    position: relative; /* Necessário para posicionar círculos */
-    overflow: hidden; /* Impede scroll devido aos círculos */
 }
 
 nav {
     background-color: black;
     padding: 1rem;
+    position: sticky; /* Mantém o menu fixo ao rolar */
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
@@ -31,12 +32,12 @@ nav a {
     max-width: 1200px;
     margin: auto;
     padding: 2rem;
-    position: relative; /* Necessário para posicionar os círculos na seção */
 }
 
 #home {
     text-align: center;
     padding: 2rem 0;
+    position: relative;
 }
 
 .profile-image {
@@ -44,57 +45,22 @@ nav a {
     height: auto;
     border-radius: 50%;
     position: relative;
-    z-index: 2; /* Garantir que a imagem fique acima dos círculos */
+    z-index: 2;
 }
 
 .circle {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.2); /* Fundo branco transparente */
-    border-radius: 50%; /* Forma redonda */
-    z-index: 1; /* Círculos ficam abaixo da imagem */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 1;
 }
 
-.circle1 {
-    width: 200px;
-    height: 200px;
-    top: 50px;
-    left: 10%;
-}
-
-.circle2 {
-    width: 300px;
-    height: 300px;
-    top: 100px;
-    right: 15%;
-}
-
-.circle3 {
-    width: 250px;
-    height: 250px;
-    bottom: 150px;
-    left: 30%;
-}
-
-.circle4 {
-    width: 180px;
-    height: 180px;
-    top: 200px;
-    left: 60%;
-}
-
-.circle5 {
-    width: 220px;
-    height: 220px;
-    bottom: 100px;
-    right: 25%;
-}
-
-.circle6 {
-    width: 150px;
-    height: 150px;
-    bottom: 50px;
-    left: 20%;
-}
+.circle1 { width: 200px; height: 200px; top: 50px; left: 10%; }
+.circle2 { width: 300px; height: 300px; top: 100px; right: 15%; }
+.circle3 { width: 250px; height: 250px; bottom: 150px; left: 30%; }
+.circle4 { width: 180px; height: 180px; top: 200px; left: 60%; }
+.circle5 { width: 220px; height: 220px; bottom: 100px; right: 25%; }
+.circle6 { width: 150px; height: 150px; bottom: 50px; left: 20%; }
 
 section {
     padding: 2rem 0;
@@ -105,8 +71,12 @@ h2 {
 }
 
 #about, #works {
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
-    color: white; /* Texto branco para contraste */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+#contact {
+    background-color: #f8f8f8;
     padding: 2rem 0;
 }
 
@@ -133,8 +103,6 @@ h2 {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: #f8f8f8;
-    margin-top: 2rem;
 }
 
 .social-icons {
@@ -151,7 +119,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #0073e6; /* Muda a cor ao passar o mouse */
+    color: #0073e6;
 }
 
 #contact-form {
@@ -182,11 +150,35 @@ footer {
 #contact-form button:hover {
     background-color: #333;
 }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.social-icon {
+    width: 40px; /* Tamanho dos ícones */
+    height: 40px;
+    margin: 0 1rem; /* Espaçamento entre ícones */
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
 
 /* Media Queries */
 @media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
     #contact-form input {
         width: 90%; /* Aumenta a largura dos campos em telas menores */
+    }
+
+    .social-icons a {
+        font-size: 1.5rem; /* Tamanho menor dos ícones em telas menores */
     }
 }
 
